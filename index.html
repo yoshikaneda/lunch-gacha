@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今日のランチ・ガチャ</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f0f2f5; }
+        .card { background: white; padding: 30px; border-radius: 15px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        #result { font-size: 2rem; font-weight: bold; color: #e67e22; margin: 20px 0; height: 3rem; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 20px; font-size: 1.2rem; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🍴 今日のランチ・ガチャ</h1>
+    <div id="result">？？？</div>
+    <button onclick="roulette()">ガチャを回す！</button>
+</div>
+
+<script>
+    const options = ["カレーライス", "醤油ラーメン", "お寿司", "牛丼", "パスタ", "うどん・そば", "ハンバーガー", "お弁当", "立ち食いそば", "コンビニおにぎり"];
+    
+    function roulette() {
+        const resultDiv = document.getElementById('result');
+        let count = 0;
+        const interval = setInterval(() => {
+            resultDiv.innerText = options[Math.floor(Math.random() * options.length)];
+            count++;
+            if (count > 10) {
+                clearInterval(interval);
+                resultDiv.innerText = "✨ " + options[Math.floor(Math.random() * options.length)] + " ✨";
+            }
+        }, 50);
+    }
+</script>
+
+</body>
+</html>
